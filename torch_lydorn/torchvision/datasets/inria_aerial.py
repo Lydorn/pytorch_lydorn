@@ -263,6 +263,7 @@ class InriaAerial(torch.utils.data.Dataset):
                                                                      number=tile_info["number"]))
             gt_filepath = gt_base_filepath + "." + self.gt_type
             if not os.path.exists(gt_filepath):
+                raw_data["gt_polygons"] = []
                 return raw_data
             if self.gt_type == "npy":
                 np_gt_polygons = np.load(gt_filepath, allow_pickle=True)
