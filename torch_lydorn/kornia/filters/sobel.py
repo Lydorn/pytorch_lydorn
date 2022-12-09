@@ -1,5 +1,3 @@
-import kornia
-
 import torch
 
 from kornia.filters.kernels import normalize_kernel2d
