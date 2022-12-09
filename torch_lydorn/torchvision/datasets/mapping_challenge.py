@@ -5,6 +5,7 @@ import warnings
 import skimage.io
 from multiprocess import Pool
 from functools import partial
+import _pickle
 
 import numpy as np
 from pycocotools.coco import COCO
@@ -179,7 +180,7 @@ def preprocess_one(image_info, pre_filter, pre_transform, processed_dir):
         # Load already-processed sample
         try:
             data = torch.load(out_filepath)
-        except EOFError:
+        except (EOFError, _pickle.UnpicklingError):
             pass
     if data is None:
         # Process sample:
